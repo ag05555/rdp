@@ -60,12 +60,12 @@ jobs:
 
       - name: Install Tailscale
         run: |
-          $TscUrl = "https://pkgs.tailscale.com/stable/tailscale-setup-1.92.0-amd64.msi"
+          $TscUrl = "https://pkgs.tailscale.com/stable/tailscale-setup-1.82.0-amd64.msi"
           $InstallerPath = "$env:TEMP\tailscale.msi"
 
           Invoke-WebRequest -Uri $TscUrl -OutFile $InstallerPath
           Start-Process msiexec.exe -ArgumentList "/i", $InstallerPath, "/quiet", "/norestart" -Wait
-          Remove-Item $InstallerPath -Force
+          Remove-Item $installerPath -Force
 
       - name: Establish Tailscale Connection
         run: |
